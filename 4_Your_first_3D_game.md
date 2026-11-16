@@ -84,7 +84,7 @@ Main
 
     ![10.mesh_instance3d](images/first_3d_game/01.game_setup/10.mesh_instance3d.webp)
 
-7. Inspector の **Mesh** → **New BoxMesh**
+7. Inspector 最上段の **Mesh** の `<empty>` 欄 → **New BoxMesh**。そのあと Mesh 欄（立方体のサムネイル）をもう一度クリックすると、下に Size / Material などの設定が開く
 
     ![11.box_mesh](images/first_3d_game/01.game_setup/11.box_mesh.webp)
 
@@ -343,6 +343,8 @@ Main
     ![10.camera_perspective](images/first_3d_game/03.player_movement_code/10.camera_perspective.png)
 
 
+> ※ 3Dノードの **Position / Rotation / Scale** は、Inspector の **Node3D > Transform** の中にあり、初期状態では折りたたまれています。▸ をクリックして開いてください。
+
 画面の端に空間が見えるのは、遠近感（パースペクティブ）のためです。この作品では、**平行投影（オルソ）**にして、距離を見やすくします。
 
 11. Camera3D を選び、Inspector の **Projection** を **Orthogonal**、**Size** を `19` にする
@@ -491,7 +493,7 @@ func _on_visible_on_screen_notifier_3d_screen_exited():
 
     ![12.four_cylinders](images/first_3d_game/05.spawning_mobs/12.four_cylinders.png)
 
-8. 白くて見づらいので、色を付ける。4つの MeshInstance3D をすべて選び（最初をクリック、最後を Shift+クリック）、Inspector の **Material** に **StandardMaterial3D** を作る
+8. 白くて見づらいので、色を付ける。4つの MeshInstance3D をすべて選び（最初をクリック、最後を Shift+クリック）、Inspector 最上段の **Mesh** 欄（サムネイル）をクリックして展開し、その中の **Material** に **StandardMaterial3D** を作る（MeshInstance3D 本体の Geometry にある Material Override ではない）。色は作った Material をクリックして、**Albedo > Color** で変える
 
     ![13.selecting_all_cylinders](images/first_3d_game/05.spawning_mobs/13.selecting_all_cylinders.webp)
 
@@ -941,7 +943,7 @@ func _unhandled_input(event):
 ### 9-2. 浮遊（float）のキーフレーム
 キーフレーム = 「ある時間の、ある値」。時間カーソルの位置に、作られます。
 
-1. **Character** ノードを選び、Inspector の **Transform** を開く
+1. **Character** ノードを選び、Inspector の **Node3D > Transform**（折りたたまれているので、クリックで開く）を開く
 2. **Position** と **Rotation** の横の**鍵アイコン**をクリック
 
     ![09.creating_first_keyframe](images/first_3d_game/09.adding_animations/09.creating_first_keyframe.webp)
