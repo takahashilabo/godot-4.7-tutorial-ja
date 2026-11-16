@@ -112,7 +112,7 @@ Main  ← ゲーム全体を動かす
 
 > ⚠ 左の一覧で、どのアニメーションを選んでいるかを確認してから、画像を入れてください（walk の欄に up の画像を入れてしまうミスが多い）。
 
-8. 画像が大きいので、AnimatedSprite2D を選び、Inspector の **Node2D > Scale** を `(0.5, 0.5)` にする
+8. 画像が大きいので、AnimatedSprite2D を選び、Inspector の **Node2D > Transform**（初期状態では折りたたまれているので、クリックで開く）の **Scale** を `(0.5, 0.5)` にする。Scale は X と Y が鎖アイコンで連動しているので、片方に入力すれば両方変わる
 
     ![player_scale](images/first_2d_game/player_scale.webp)
 
@@ -333,7 +333,7 @@ Mob (RigidBody2D)
 └─ VisibleOnScreenNotifier2D
 ```
 
-3. 子ノードを、Player と同じく、誤って選ばないようにする: Mob を選び、ツールバーの **Group** ボタン（または **Ctrl+G**、macOS は Cmd+G）
+3. 子ノードを、Player と同じく、誤って選ばないようにする: Mob を選び、2Dビュー上部ツールバーの、**鍵アイコンの右隣**のボタン（マウスを重ねると Group Selected Node(s) と出る。または **Ctrl+G**、macOS は Cmd+G）
 4. Mob を選び、Inspector の **RigidBody2D** セクションの **Gravity Scale** を `0`（落ちないようにする）
 5. 同じ Mob の Inspector の **CollisionObject2D > Collision** を開き、**Mask** の **`1` のチェックを外す**（敵どうしが衝突しないようにする）
 
@@ -355,8 +355,8 @@ Mob (RigidBody2D)
 
     ![mob_animations](images/first_2d_game/mob_animations.webp)
 
-3. AnimatedSprite2D の **Scale** を `(0.75, 0.75)`
-4. CollisionShape2D の **Shape** に **CapsuleShape2D** を設定し、**Rotation** を `90` にして、画像に合わせる（Inspector の Transform の下）
+3. AnimatedSprite2D の **Node2D > Transform**（折りたたまれているので開く）の **Scale** を `(0.75, 0.75)`
+4. CollisionShape2D の **Shape** に **CapsuleShape2D** を設定し、**Node2D > Transform**（折りたたまれているので開く）の **Rotation** を `90` にして、画像に合わせる
 5. VisibleOnScreenNotifier2D は、画面から出たことを知らせるノード。小さいままでもOK
 6. **mob.tscn** として保存
 
@@ -546,22 +546,31 @@ func _ready():
 | Timer | MessageTimer |
 
 ### 6-2. フォントと大きさ
-1. ScoreLabel を選び、Inspector の **Text** に `0` と入力
-2. **Theme Overrides > Fonts** の項目で **Load** → `fonts/Xolonium-Regular.ttf` を選ぶ
+Inspector の項目は、初期状態では多くが**折りたたまれています**（▸ をクリックで開く）。Label の Inspector は縦に長いので、下へスクロールして探します。
+
+1. ScoreLabel を選び、Inspector 最上部の **Text** 欄に `0` と入力
+2. Inspector を下へスクロールし、**Theme Overrides**（折りたたまれている）を開く。中に Colors / Constants / **Fonts** / **Font Sizes** / Styles が並び、これもそれぞれ折りたたまれている
+3. **Fonts** を開くと **Font** という行が出る。右の `<empty>` 欄の ▾ → **Load**（または Quick Load）→ `fonts/Xolonium-Regular.ttf` を選ぶ（左のチェックボックスは自動でオンになる）
 
     ![custom_font_load_font](images/first_2d_game/custom_font_load_font.webp)
 
-3. **Theme Overrides > Font Sizes** で `64` にする
+4. **Font Sizes** を開くと **Font Size**（初期値 16）が出る。`64` にする
 
     ![custom_font_size](images/first_2d_game/custom_font_size.webp)
 
-4. **Message** と **StartButton** にも、同じ設定（フォントとサイズ）をする
+5. **Message** と **StartButton** にも、同じ設定（フォントとサイズ）をする
 
 ### 6-3. 配置
+Label や Button のような UI 部品（Control）の位置・大きさは、Inspector の **Layout** セクション（折りたたまれている）にあります。
+
+- **Anchors Preset** は **Layout** を開くと出る、`Top Left` と表示されたドロップダウン（2Dビュー上部ツールバーにも、Control を選ぶと同じメニューが出る）
+- **Size X / Size Y / Position** は、Layout の中の **Transform**（さらに折りたたまれている）を開くと出る
+- ※ HUD は CanvasLayer の子なので、Layout に「This node doesn't have a control parent」と青い案内が出ますが、そのまま進めてOKです
+
 **ScoreLabel**
 1. Text = `0`
-2. **Horizontal Alignment** と **Vertical Alignment** を `Center`
-3. **Anchor Preset**（ツールバーの、アンカー設定のメニュー）を **Center Top**
+2. **Horizontal Alignment** と **Vertical Alignment**（Inspector 上の方、項目名は途中で切れて `Horizontal Align` のように見える）を `Center`
+3. Layout > **Anchors Preset** を **Center Top**
 
     ![ui_anchor](images/first_2d_game/ui_anchor.webp)
 
@@ -570,13 +579,13 @@ func _ready():
 1. Text = `Dodge the Creeps!`
 2. Horizontal / Vertical Alignment を `Center`
 3. **Autowrap Mode** を `Word`（これがないと1行になる）
-4. **Control > Layout/Transform** の **Size X** を `480`
-5. Anchor Preset を **Center**
+4. Layout > Transform の **Size X** を `480`
+5. Anchors Preset を **Center**
 
 **StartButton**
 1. Text = `Start`
-2. **Size X** = `200`、**Size Y** = `100`
-3. Anchor Preset を **Center Bottom**
+2. Layout > Transform の **Size X** = `200`、**Size Y** = `100`
+3. Anchors Preset を **Center Bottom**
 4. **Position Y** = `580`
 
 **MessageTimer**: Wait Time = `2`、**One Shot** = オン
