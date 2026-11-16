@@ -1222,3 +1222,4 @@ func _on_mob_squashed():
 - Autoload は `res://music_player.tscn` を選ぶと、ノード名で自動登録される。
 - 外部エディタでスクリプトを書き換えたら、Godot 側で開いているタブを閉じてから Project → Reload Current Project。開いたままだと古い内容で上書きされることがある。
 - プレイヤーが動かないと、最初の敵に数秒で倒される。動作確認のときは矢印キーで動く。
+- Camera3D の **Projection** は、Perspective / Orthogonal / Frustum から選ぶ。この作品は **Orthogonal** にして、Size を調整する。

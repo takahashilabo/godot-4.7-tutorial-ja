@@ -904,8 +904,6 @@ func _on_message_timer_timeout():
 ## 実機で確認した注意点（4.7.2 / Mac）
 
 - **Path2D** のツールバーは Select Points / Select Control Points / **Add Point** / Delete Point / Close Curve の順。点を打つ前に Add Point を選ぶ。
-- Ball など物理で動くものは、PhysicsMaterial の **Gravity Scale** を 4.0 にすると、動きが締まる。
-- Camera の **Projection** は、2D では使わない。3D シーンで変えるときの選択肢（Perspective / Orthogonal / Frustum）。
 - `player.gd` の `hide()` を `_ready` に書くと、そのシーンを単独で実行したとき（F6）に、プレイヤーが表示されない。
 - コードエディタへの手入力は崩れやすい。長いコードは、ファイルを **Attach Script → Load** で読み込む。
 - `art` や `fonts` を外から追加したら、Project → **Reload Current Project** で反映する。
