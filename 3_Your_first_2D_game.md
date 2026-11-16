@@ -33,7 +33,7 @@ Main  ← ゲーム全体を動かす
 1. dodge_the_creeps_2d_assets.zip をダウンロードして展開する（URLは「はじめに」）
 2. 中の **`art/` と `fonts/` の2つのフォルダ**を、プロジェクトのフォルダへ移動（コピー）する
 
-✅ エディタの FileSystem ドックに `art` と `fonts` が出る（出ないときは、エディタのウィンドウをクリックして更新を待つ）。
+✅ エディタの FileSystem ドックに `art` と `fonts` が出る（出ないときは、エディタのウィンドウをクリックして少し待つ。それでも出ないときは、メニュー **Project > Reload Current Project**）。
 
 ![folder-content](images/first_2d_game/folder-content.webp)
 
@@ -89,7 +89,7 @@ Main  ← ゲーム全体を動かす
 ### 2-2. 見た目（アニメーションする画像）
 1. Player を選び、**Ctrl+A**（macOS: Cmd+A）で子ノードを追加 → **AnimatedSprite2D** を作成
 2. AnimatedSprite2D にも警告が出る。これは「SpriteFrames（アニメーションのリスト）がない」という意味
-3. AnimatedSprite2D を選び、Inspector の **Animation** セクションにある **Sprite Frames** を `[empty]` → **New SpriteFrames**
+3. AnimatedSprite2D を選び、Inspector の最上段にある **Sprite Frames** を `[empty]` → **New SpriteFrames**（Inspector の最上段は、Sprite Frames / Animation / Frame / Speed Scale の4項目）
 
     ![new_spriteframes](images/first_2d_game/new_spriteframes.webp)
 
@@ -97,8 +97,9 @@ Main  ← ゲーム全体を動かす
 
     ![spriteframes_panel](images/first_2d_game/spriteframes_panel.webp)
 
-5. パネル左のアニメーション一覧にある `default` をクリックして、名前を **`walk`** に変える
-6. **Add Animation** ボタンで、新しいアニメーションを作り、名前を **`up`** にする
+5. パネル左のアニメーション一覧にある `default` を**ダブルクリック**して、名前を **`walk`** に変える（入力したら Enter）
+6. **Add Animation** ボタン（パネル左上の、いちばん左のアイコン）で、新しいアニメーションを作る。`new_animation` という名前が付くので、ダブルクリックして **`up`** に変える
+   - 名前を入力するとき、**Cmd+A（全選択）は使わない**。この画面では Cmd+A が「子ノードの追加」を開いてしまう
 7. FileSystem で `art` フォルダを開き、画像を**ドラッグ＆ドロップ**で、右側の **Animation Frames** 欄に入れる
 
     ![spriteframes_panel2](images/first_2d_game/spriteframes_panel2.webp)

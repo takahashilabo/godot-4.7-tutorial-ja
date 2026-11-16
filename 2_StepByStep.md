@@ -147,12 +147,12 @@
 
 5. 「古いバージョンのGodotで最後に開かれた」という警告が出たら **OK**
 
-✅ エディタが開く。FileSystem に `main.tscn`（壁だけのシーン）と `ball.tscn`（ボール）がある。
+✅ エディタが開く（4.7.2 では、最初は3D画面が開く）。FileSystem に `Main.tscn`（壁だけのシーン）と `Ball.tscn`（ボール）がある。
 
 ![instancing_main_scene](images/step_by_step/instancing_main_scene.webp)
 
 
-> ⚠ 空の3D画面が出たら、上部の「2D」ボタンを押す。`main.tscn` が開いていなければ、FileSystem で `main.tscn` をダブルクリック。
+> ⚠ 空の3D画面が出たら、上部の「2D」ボタンを押す。`Main.tscn` が開いていなければ、FileSystem で `Main.tscn` をダブルクリック。
 
 ![instancing_2d_scene_select](images/step_by_step/instancing_2d_scene_select.webp)
 
@@ -166,12 +166,12 @@
     ![instancing_scene_link_button](images/step_by_step/instancing_scene_link_button.webp)
 
    - ツールチップは「Instantiate a scene file as a Node」
-3. 一覧から **ball.tscn** をダブルクリック
+3. 一覧から **Ball.tscn** をダブルクリック
 
     ![instancing_instance_child_window](images/step_by_step/instancing_instance_child_window.webp)
 
 
-✅ ボールが画面の左上に出る。Scene ドックの Main の下に「Ball」が追加され、横にクラッパーボード風のアイコンが付く（「別シーンのインスタンス」の印。クリックすると ball.tscn が開く）。
+✅ ボールが画面の左上に出る。Scene ドックの Main の下に「Ball」が追加され、横にクラッパーボード風のアイコンが付く（「別シーンのインスタンス」の印。クリックすると Ball.tscn が開く）。
 
 ![instancing_ball_instanced](images/step_by_step/instancing_ball_instanced.webp)
 
@@ -198,7 +198,7 @@
 > 複製されたボールは、Scene ドック上で名前が自動的にばらばらになります（Ball、Ball2…）。
 
 ### 2-4. 元のシーンを直して、全部に反映する
-1. FileSystem ドックで **ball.tscn** をダブルクリックして開く
+1. FileSystem ドックで **Ball.tscn** をダブルクリックして開く
 
     ![instancing_ball_scene_open](images/step_by_step/instancing_ball_scene_open.webp)
 
@@ -238,7 +238,7 @@
 
 5. 実行 → そのボールだけ、ものすごく速く落ちる
 
-> **戻すボタンの意味**: 「元シーン（ball.tscn）の値を、このインスタンスだけ上書きしている」という印です。上書きした値は、元のシーンを直しても変わりません。戻すボタンを押すと、元の値に戻ります。
+> **戻すボタンの意味**: 「元シーン（Ball.tscn）の値を、このインスタンスだけ上書きしている」という印です。上書きした値は、元のシーンを直しても変わりません。戻すボタンを押すと、元の値に戻ります。
 
 > ⚠ PhysicsMaterial の値を、Main の中のボールから直接変えようとしても編集できません。PhysicsMaterial は**リソース**という種類で、共有されているためです。インスタンス専用にしたいときは、その項目を右クリック > **Make Unique** を選びます。リソースの詳細は後の章で出てきます。
 
@@ -338,6 +338,8 @@ func _init():
 - `func` は関数を定義する言葉
 - `_init` は特別な名前で、ノードが作られた瞬間に自動で呼ばれる
 - **2行目の字下げ（インデント）が必要**。ないと「Indented block expected」のエラーになる
+- コードエディタは、`:` で改行すると自動で字下げし、`(` や `"` は閉じ側も自動で入れる。**字下げを手で足さない**こと。閉じカッコは、そのまま打てば上書きされる
+- 入力中に出る補完の候補（ポップアップ）が出たまま Enter を押すと、改行ではなく**候補が確定される**。意図と違うときは Esc で候補を閉じてから Enter を押す
 
 実行します。
 1. シーンを `sprite_2d.tscn` として保存（Ctrl+S）

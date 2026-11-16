@@ -33,6 +33,8 @@
     ![import_project_to_4.x_prompt](images/first_3d_game/01.game_setup/import_project_to_4.x_prompt.webp)
 
 
+> ⚠ **「Blender 3.0+ is required to import '.blend' files」というダイアログが出ることがあります。** 素材に `.blend`（Blender のファイル）が入っているためです。このチュートリアルでは Blender は使いません。**Disable '.blend' Import** を押し、「Save & Restart」でエディタを再起動してください（再起動後は、そのまま開きます）。Blender を入れている人は、「Confirm Path」でもかまいません。
+
 ✅ FileSystem に `art/`、`fonts/`、`icon.svg` がある。`art/` に `player.glb`、`mob.glb`（3Dモデル）、マテリアル、BGM が入っている。
 
 ![04.start_assets](images/first_3d_game/01.game_setup/04.start_assets.webp)
