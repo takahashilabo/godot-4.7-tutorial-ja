@@ -351,7 +351,7 @@ Mob (RigidBody2D)
 
 > ※ 画像ファイル名は art フォルダ内を見て選んでください。
 
-2. 各アニメーションの **Animation Speed** を `3` にする（アニメーションごとに設定する）。右の再生ボタンでプレビューできる
+2. 各アニメーションの再生速度を `3` にする（アニメーションごとに設定する）。SpriteFramesパネル左上、アニメーション一覧の上のツールバーにある **「5.0 FPS」と表示された欄**（マウスを重ねると Animation Speed と出る）の数字を `3` に変えます。上部の再生ボタンでプレビューできる
 
     ![mob_animations](images/first_2d_game/mob_animations.webp)
 
