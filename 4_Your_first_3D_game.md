@@ -17,11 +17,26 @@
 ### 1-1. 素材のプロジェクトを開く
 1. 3d_squash_the_creeps_starter.zip をダウンロードして展開する（URLは「はじめに」）
 2. プロジェクトマネージャーで **Import** をクリック
+
+    ![01.import_button](images/first_3d_game/01.game_setup/01.import_button.webp)
+
 3. 展開したフォルダの `project.godot` を選ぶ（Browse ボタンから）
+
+    ![02.browse_to_project_folder](images/first_3d_game/01.game_setup/02.browse_to_project_folder.webp)
+
 4. **Import** をクリック
+
+    ![03.import_and_edit](images/first_3d_game/01.game_setup/03.import_and_edit.webp)
+
 5. 「古いバージョンで作られた」という警告が出たら **OK**（現在のバージョンに変換される）。すぐ開かなければ、一覧から開く
 
+    ![import_project_to_4.x_prompt](images/first_3d_game/01.game_setup/import_project_to_4.x_prompt.webp)
+
+
 ✅ FileSystem に `art/`、`fonts/`、`icon.svg` がある。`art/` に `player.glb`、`mob.glb`（3Dモデル）、マテリアル、BGM が入っている。
+
+![04.start_assets](images/first_3d_game/01.game_setup/04.start_assets.webp)
+
 
 > `.glb` は、3Dシーンを保存する、オープンな形式（glTF 2.0）のファイルです。
 
@@ -29,12 +44,21 @@
 1. Scene ドックの **Add Child Node（＋）** → **Node** をダブルクリックして作成
    - 名前の変更: ノードを右クリック > Rename、または **F2**
 2. 名前を `Main` にする
+
+    ![05.main_node](images/first_3d_game/01.game_setup/05.main_node.webp)
+
 3. **Ctrl+S** で `main.tscn` として保存
 
 ### 1-3. 地面
 1. Main を選び、**StaticBody3D**（動かない当たり判定）を追加
+
+    ![adding_static_body3D](images/first_3d_game/01.game_setup/adding_static_body3D.webp)
+
 2. その子に **CollisionShape3D** を追加
 3. StaticBody3D の名前を `Ground` に変える
+
+    ![06.staticbody_node](images/first_3d_game/01.game_setup/06.staticbody_node.webp)
+
 
 ```
 Main
@@ -43,28 +67,65 @@ Main
 ```
 
 4. CollisionShape3D に警告が出ている（形がない）。CollisionShape3D を選び、Inspector の **Shape** `<empty>` → **New BoxShape3D**
+
+    ![07.collision_shape_warning](images/first_3d_game/01.game_setup/07.collision_shape_warning.webp)
+
+    ![08.create_box_shape3D](images/first_3d_game/01.game_setup/08.create_box_shape3D.webp)
+
 5. BoxShape3D をクリックして展開し、**Size** を **X=60、Y=2、Z=60** にする
+
+    ![09.box_size](images/first_3d_game/01.game_setup/09.box_size.webp)
+
 
 当たり判定は見えません。見た目の床を作ります。
 6. Ground を選び、子に **MeshInstance3D** を追加
+
+    ![10.mesh_instance3d](images/first_3d_game/01.game_setup/10.mesh_instance3d.webp)
+
 7. Inspector の **Mesh** → **New BoxMesh**
+
+    ![11.box_mesh](images/first_3d_game/01.game_setup/11.box_mesh.webp)
+
 8. BoxMesh をクリックして展開し、**Size** を **60、2、60** にする
 
 ✅ 灰色の大きな板が、グリッドを覆う。
 
+![12.cube_resized](images/first_3d_game/01.game_setup/12.cube_resized.webp)
+
+
 地面を1m下げて、グリッドを見えるようにします。
 9. 3D 画面で、ツールバーの **Use Snap** ボタン（または **Y** キー）でスナップをオンにする
+
+    ![use_snap](images/first_3d_game/01.game_setup/use_snap.webp)
+
 10. **Ground ノード**を選び、Y軸（緑の矢印）をドラッグして、**1m下げる**
     - ⚠ 動かすのは **Ground**。MeshInstance3D や CollisionShape3D ではありません
     - 矢印（移動ギズモ）が見えないときは、ツールバーの **Transform Mode** を選ぶ
+
+    ![move_gizmo_y_axis](images/first_3d_game/01.game_setup/move_gizmo_y_axis.webp)
+
 11. Ground の Inspector の **Position > Y** が `-1` になっていればOK
+
+    ![15.translation_amount](images/first_3d_game/01.game_setup/15.translation_amount.png)
+
+    ![ground_down1meter](images/first_3d_game/01.game_setup/ground_down1meter.webp)
+
 
 ### 1-4. ライト
 1. Main を選び、**DirectionalLight3D** を追加
+
+    ![create_directional_light3d](images/first_3d_game/01.game_setup/create_directional_light3d.webp)
+
 2. ギズモで、上へ動かし、赤い円弧を使って、X軸まわりに回転させ、地面が照らされるようにする
 3. Inspector の **Shadow** にチェック（影をオン）
 
+    ![16.turn_on_shadows](images/first_3d_game/01.game_setup/16.turn_on_shadows.webp)
+
+
 ✅ ここまでが出発点。次はプレイヤー。
+
+![17.project_with_light](images/first_3d_game/01.game_setup/17.project_with_light.webp)
+
 
 ---
 
@@ -72,18 +133,41 @@ Main
 
 ### 2-1. シーンの構成
 1. メニュー **Scene > New Scene**
+
+    ![new_scene](images/first_3d_game/02.player_input/new_scene.webp)
+
 2. **Other Node** から **CharacterBody3D** を作り、名前を `Player` にする
+
+    ![add_character_body3D](images/first_3d_game/02.player_input/add_character_body3D.webp)
+
    - CharacterBody3D は、**自分のコードで動きを決める**キャラクター用の物理ノード（RigidBody は物理エンジン任せ）
 3. Player の子に **Node3D** を追加し、名前を `Pivot` にする
+
+    ![adding_node3D](images/first_3d_game/02.player_input/adding_node3D.webp)
+
    - あとで、アニメーションと独立して、モデルを回転させるための土台
 4. FileSystem で `art/` を開き、**`player.glb` を Pivot へドラッグ＆ドロップ**
+
+    ![instantiating_the_model](images/first_3d_game/02.player_input/instantiating_the_model.webp)
+
 5. できた子ノードの名前を `Character` にする
+
+    ![scene_structure](images/first_3d_game/02.player_input/scene_structure.webp)
+
 
 ### 2-2. 当たり判定
 1. Player を選び、**CollisionShape3D** を追加
 2. **Shape** → **New SphereShape3D**
 3. 球をキャラクターに合わせる: オレンジの点を動かして、半径 約 `0.8` m にする
+
+    ![sphere_shape](images/first_3d_game/02.player_input/sphere_shape.png)
+
 4. 球の下端が、グリッドの平面に合うよう、上へ動かす
+
+    ![moving_the_sphere_up](images/first_3d_game/02.player_input/moving_the_sphere_up.png)
+
+    ![toggling_visibility](images/first_3d_game/02.player_input/toggling_visibility.webp)
+
    - 見づらいときは、Pivot または Character の **目のアイコン**で、モデルを一時的に隠す
 5. `player.tscn` として保存
 
@@ -96,10 +180,23 @@ Player (CharacterBody3D)
 
 ### 2-3. 入力アクション（Input Map）
 1. メニュー **Project > Project Settings...** → **Input Map** タブ
+
+    ![project_settings](images/first_3d_game/02.player_input/project_settings.webp)
+
+    ![input_map_tab](images/first_3d_game/02.player_input/input_map_tab.webp)
+
 2. **Show Built-in Actions** は**オフのまま**（ゲームパッドにも対応するため、自分用のアクションを作る）
 3. 上の入力欄に、名前を入れて **Add** で、次の5つを作る:
+
+    ![adding_action](images/first_3d_game/02.player_input/adding_action.webp)
+
    `move_left`、`move_right`、`move_forward`、`move_back`、`jump`
 4. 各アクションの **＋** で、キーを割り当てる
+
+    ![left_inputmap](images/first_3d_game/02.player_input/left_inputmap.webp)
+
+    ![keyboard_keys](images/first_3d_game/02.player_input/keyboard_keys.webp)
+
 
 | アクション | キーボード | ゲームパッド |
 |---|---|---|
@@ -109,7 +206,17 @@ Player (CharacterBody3D)
 | move_back | ↓ と S | 左スティックの Y 軸のプラス方向 |
 | jump | Space | A ボタン |
 
+![move_inputs_mapped](images/first_3d_game/02.player_input/move_inputs_mapped.webp)
+
+![jump_input_action](images/first_3d_game/02.player_input/jump_input_action.webp)
+
+
 > 操作:「＋」→ キーを押す → **OK**。ゲームパッドは、「＋」のあと、一覧の **Joypad Axes** や **Joypad Buttons** から自分で選ぶ。
+
+![joystick_axis_input](images/first_3d_game/02.player_input/joystick_axis_input.webp)
+
+![joy_button_option](images/first_3d_game/02.player_input/joy_button_option.webp)
+
 
 ---
 
@@ -117,6 +224,9 @@ Player (CharacterBody3D)
 
 ### 3-1. スクリプト
 1. Player を**右クリック > Attach Script**
+
+    ![01.attach_script_to_player](images/first_3d_game/03.player_movement_code/01.attach_script_to_player.webp)
+
 2. **Template** を **Empty** にして **Create**
 
 ```gdscript
@@ -184,9 +294,18 @@ func _physics_process(delta):
 3Dには、**カメラがないと何も映りません。**
 
 1. `player.tscn` を保存し、**Main** のタブに切り替える（閉じていたら FileSystem で `main.tscn` をダブルクリック）
+
+    ![02.clicking_main_tab](images/first_3d_game/03.player_movement_code/02.clicking_main_tab.webp)
+
 2. Main を**右クリック > Instantiate Child Scene** → `player.tscn` をダブルクリック
+
+    ![03.instance_child_scene](images/first_3d_game/03.player_movement_code/03.instance_child_scene.webp)
+
 3. Main を右クリック > **Add Child Node** → **Marker3D** → 名前を `CameraPivot`
 4. CameraPivot の子に **Camera3D** を追加
+
+    ![04.scene_tree_with_camera](images/first_3d_game/03.player_movement_code/04.scene_tree_with_camera.webp)
+
 
 ```
 Main
@@ -198,15 +317,38 @@ Main
 ```
 
 5. Camera3D を選ぶと、ビューポート左上に **Preview** チェックボックスが出る。これで、ゲーム画面のカメラ視点を見られる
+
+    ![05.camera_preview_checkbox](images/first_3d_game/03.player_movement_code/05.camera_preview_checkbox.webp)
+
 6. 見ながら配置するために、ビューを2分割する。ツールバーの **View > 2 Viewports**（**Ctrl+2**、macOS は Cmd+2）
+
+    ![06.two_viewports](images/first_3d_game/03.player_movement_code/06.two_viewports.webp)
+
 7. 下のビューで Camera3D を選んで **Preview** をオン
+
+    ![07.camera_preview_checkbox](images/first_3d_game/03.player_movement_code/07.camera_preview_checkbox.webp)
+
 8. 上のビューで、Camera3D を選び、Z軸（青い矢印）方向へ **約 19** 動かす
+
+    ![08.camera_moved](images/first_3d_game/03.player_movement_code/08.camera_moved.png)
+
 9. **CameraPivot** を選び、X軸まわり（赤い円）に **-45 度** 回転する（クレーンにカメラが付いているイメージ）
+
+    ![09.camera_rotated](images/first_3d_game/03.player_movement_code/09.camera_rotated.png)
+
 10. **F6** で実行 → 矢印キーで動けることを確認
+
+    ![10.camera_perspective](images/first_3d_game/03.player_movement_code/10.camera_perspective.png)
+
 
 画面の端に空間が見えるのは、遠近感（パースペクティブ）のためです。この作品では、**平行投影（オルソ）**にして、距離を見やすくします。
 
 11. Camera3D を選び、Inspector の **Projection** を **Orthogonal**、**Size** を `19` にする
+
+    ![13.camera3d_values](images/first_3d_game/03.player_movement_code/13.camera3d_values.webp)
+
+    ![12.viewport_change](images/first_3d_game/03.player_movement_code/12.viewport_change.webp)
+
 
 > ⚠ 平行投影で、影がぼやけたら、Camera3D の **Far** を `100` 程度に下げてみる（小さくしすぎると、遠くの物が消える）。
 
@@ -220,11 +362,25 @@ Main
 1. 新しいシーンを作り、根を **CharacterBody3D**、名前を `Mob` にする
 2. 子に **Node3D** を追加して `Pivot` にする
 3. `mob.glb` を Pivot へドラッグ＆ドロップし、名前を `Character` にする
+
+    ![drag_drop_mob](images/first_3d_game/04.mob_scene/drag_drop_mob.webp)
+
 4. Mob の子に **CollisionShape3D** を追加し、**Shape** を **New BoxShape3D**
+
+    ![03.scene_with_collision_shape](images/first_3d_game/04.mob_scene/03.scene_with_collision_shape.webp)
+
 5. ボックスを調整する。**床に接して、モデルより少し細め**にする
+
+    ![05.box_final_size](images/first_3d_game/04.mob_scene/05.box_final_size.png)
+
    - 当たり判定が大きすぎると、離れて見えるのにやられて、理不尽に感じる
    - 見下ろしカメラなので、高さが少し高くてもよい
 6. Mob の子に **VisibleOnScreenNotifier3D** を追加し、ピンクの箱が、モデル全体を覆うように大きさを調整
+
+    ![06.visibility_notifier](images/first_3d_game/04.mob_scene/06.visibility_notifier.webp)
+
+    ![07.visibility_notifier_bbox_resized](images/first_3d_game/04.mob_scene/07.visibility_notifier_bbox_resized.png)
+
    - 画面から出たことを知らせるノード。敵が無限に増えないよう、出たら消すために使う
 
 ```
@@ -237,6 +393,9 @@ Mob (CharacterBody3D)
 
 ### 4-2. 敵のコード
 Mob にスクリプトを付けます。
+
+![08.mob_attach_script](images/first_3d_game/04.mob_scene/08.mob_attach_script.webp)
+
 
 ```gdscript
 extends CharacterBody3D
@@ -265,7 +424,13 @@ func initialize(start_position, player_position):
 
 ### 4-3. 画面から出たら消す
 1. **VisibleOnScreenNotifier3D** を選び、**Signals** タブを開く
+
+    ![10.node_dock](images/first_3d_game/04.mob_scene/10.node_dock.webp)
+
 2. **screen_exited()** をダブルクリック → 接続先は **Mob** → **Connect**
+
+    ![11.connect_signal](images/first_3d_game/04.mob_scene/11.connect_signal.webp)
+
 3. 作られた関数に、`queue_free()` を書く
 
 ```gdscript
@@ -281,29 +446,83 @@ func _on_visible_on_screen_notifier_3d_screen_exited():
 
 ### 5-1. 画面サイズ
 1. Project > Project Settings > **General** タブ > **Display > Window**
+
+    ![02.project_settings](images/first_3d_game/05.spawning_mobs/02.project_settings.webp)
+
 2. **Viewport Width** = `720`、**Viewport Height** = `540`
+
+    ![03.window_settings](images/first_3d_game/05.spawning_mobs/03.window_settings.webp)
+
 
 ### 5-2. 出現させる経路（目印の円柱を使う）
 カメラに映る範囲のすぐ外に経路を作りたいので、目印を置きます。
 
 1. ビューが2分割されていなければ、**Ctrl+2**。下のビューで、Camera3D を選び **Preview** オン
+
+    ![04.camera_preview](images/first_3d_game/05.spawning_mobs/04.camera_preview.png)
+
 2. Main に **Node3D** を追加して、名前を `Cylinders` にする
+
+    ![05.cylinders_node](images/first_3d_game/05.spawning_mobs/05.cylinders_node.webp)
+
 3. その子に **MeshInstance3D** を追加し、**Mesh** を **New CylinderMesh** にする
+
+    ![06.cylinder_mesh](images/first_3d_game/05.spawning_mobs/06.cylinder_mesh.webp)
+
 4. 上のビューを「上から見た平行投影」にする（ビューの左上のメニュー、またはテンキーの **7**）
+
+    ![07.top_view](images/first_3d_game/05.spawning_mobs/07.top_view.webp)
+
+    ![08.toggle_view_grid](images/first_3d_game/05.spawning_mobs/08.toggle_view_grid.webp)
+
    - グリッドがうるさい場合は、ツールバーの **View > View Grid** で切り替え
 5. 円柱を、カメラの映る範囲の**ちょうど外側の左上**へ動かす（スナップをオンにしておくと楽。Y キー）
+
+    ![09.toggle_grid_snap](images/first_3d_game/05.spawning_mobs/09.toggle_grid_snap.webp)
+
+    ![10.place_first_cylinder](images/first_3d_game/05.spawning_mobs/10.place_first_cylinder.png)
+
 6. **Ctrl+D** で複製して、下方向（青いZ軸）へ動かし、画面の外の左下へ置く
 7. 2つを Shift+クリックで選び、複製して、右方向（赤いX軸）に動かす（右上と右下）
+
+    ![11.both_cylinders_selected](images/first_3d_game/05.spawning_mobs/11.both_cylinders_selected.png)
+
+    ![12.four_cylinders](images/first_3d_game/05.spawning_mobs/12.four_cylinders.png)
+
 8. 白くて見づらいので、色を付ける。4つの MeshInstance3D をすべて選び（最初をクリック、最後を Shift+クリック）、Inspector の **Material** に **StandardMaterial3D** を作る
+
+    ![13.selecting_all_cylinders](images/first_3d_game/05.spawning_mobs/13.selecting_all_cylinders.webp)
+
+    ![14.multi_material_selection](images/first_3d_game/05.spawning_mobs/14.multi_material_selection.webp)
+
 9. 球のアイコンを開き、**Albedo** を展開して、背景と違う色（オレンジなど）にする
+
+    ![albedo_section](images/first_3d_game/05.spawning_mobs/albedo_section.webp)
+
+    ![15.bright-cylinders](images/first_3d_game/05.spawning_mobs/15.bright-cylinders.webp)
+
 10. 役目が終わったら、Cylinders を折りたたむ（目のアイコンで、非表示にしてもよい）
+
+    ![16.cylinders_fold](images/first_3d_game/05.spawning_mobs/16.cylinders_fold.webp)
+
 
 ### 5-3. 経路
 1. Main に **Path3D** を追加すると、ツールバーに4つのアイコンが出る。**Add Point**（緑の＋）を選ぶ
+
+    ![17.points_options](images/first_3d_game/05.spawning_mobs/17.points_options.webp)
+
 2. 4つの**円柱の中心**を順にクリックして、点を作る
 3. **Close Curve** アイコンで経路を閉じる
+
+    ![18.close_path](images/first_3d_game/05.spawning_mobs/18.close_path.webp)
+
+    ![19.path_result](images/first_3d_game/05.spawning_mobs/19.path_result.png)
+
 4. Path3D の子に **PathFollow3D** を追加する
 5. 名前を変える: Path3D → `SpawnPath`、PathFollow3D → `SpawnLocation`
+
+    ![20.spawn_nodes](images/first_3d_game/05.spawning_mobs/20.spawn_nodes.webp)
+
 
 ### 5-4. Main のスクリプト
 Main にスクリプトを付けます。
@@ -316,10 +535,24 @@ extends Node
 
 **mob_scene に mob.tscn を設定します**（忘れると null になる）: Main を選び、`mob.tscn` を FileSystem から、Inspector の **Mob Scene** へドラッグ＆ドロップ。
 
+![20.mob_scene_property](images/first_3d_game/05.spawning_mobs/20.mob_scene_property.webp)
+
+
 ### 5-5. タイマー
 1. Main に **Timer** を追加し、`MobTimer` と名前を付ける
+
+    ![21.mob_timer](images/first_3d_game/05.spawning_mobs/21.mob_timer.webp)
+
 2. **Wait Time** = `0.5`、**Autostart** = オン
+
+    ![22.mob_timer_properties](images/first_3d_game/05.spawning_mobs/22.mob_timer_properties.webp)
+
 3. MobTimer を選び、**Signals** タブで **timeout** をダブルクリック → 接続先 **Main** → **Connect**
+
+    ![23.timeout_signal](images/first_3d_game/05.spawning_mobs/23.timeout_signal.webp)
+
+    ![24.connect_timer_to_main](images/first_3d_game/05.spawning_mobs/24.connect_timer_to_main.webp)
+
 
 ```gdscript
 func _on_mob_timer_timeout():
@@ -339,6 +572,9 @@ func _on_mob_timer_timeout():
 
 **F6** で実行 ✅ 敵が出てきて、まっすぐ進んで、画面外で消える。敵どうしは、今は、ぶつかる。
 
+![25.spawn_result](images/first_3d_game/05.spawning_mobs/25.spawn_result.png)
+
+
 > ⚠ Main から `Player` を消すと、`$Player.position` でエラーになります。
 
 ---
@@ -350,9 +586,22 @@ func _on_mob_timer_timeout():
 - **Mask**: どのレイヤーと**衝突を検知するか**
 - 初期値は、全員がレイヤー1、マスク1 → 全員が衝突する
 
+    ![04.default_physics_properties](images/first_3d_game/06.jump_and_squash/04.default_physics_properties.webp)
+
+
 レイヤーに名前を付けます。
 1. Project > Project Settings > **Layer Names > 3D Physics**
+
+    ![02.project_settings](images/first_3d_game/06.jump_and_squash/02.project_settings.webp)
+
+    ![03.physics_layers](images/first_3d_game/06.jump_and_squash/03.physics_layers.webp)
+
 2. 1〜3番に、`player`、`enemies`、`world` と入力
+
+    ![05.toggle_layer_and_mask](images/first_3d_game/06.jump_and_squash/05.toggle_layer_and_mask.webp)
+
+    ![06.named_checkboxes](images/first_3d_game/06.jump_and_squash/06.named_checkboxes.webp)
+
 
 各ノードの設定をします。Inspector の **Collision** セクションで、Layer と Mask のボタンを切り替えます。
 
@@ -361,6 +610,11 @@ func _on_mob_timer_timeout():
 | Ground（main.tscn） | `world`（3番のみ） | なし（全部オフ） |
 | Player（player.tscn） | player（初期値のまま） | `enemies` と `world` |
 | Mob（mob.tscn） | `enemies` | なし（全部オフ） |
+
+![07.player_physics_mask](images/first_3d_game/06.jump_and_squash/07.player_physics_mask.webp)
+
+![08.mob_physics_mask](images/first_3d_game/06.jump_and_squash/08.mob_physics_mask.webp)
+
 
 > 敵の Mask を空にしたので、敵どうしはすり抜けます。ぶつけたい場合は、`enemies` の Mask をオンにします。
 
@@ -385,6 +639,15 @@ Player のスクリプトで、`fall_acceleration` の次に追加:
 ### 6-3. 敵をグループにする
 1. `mob.tscn` を開き、**Mob** を選ぶ
 2. Inspector の隣の **Groups** タブ → **＋** → 名前に `mob` と入力して **OK**
+
+    ![09.groups_tab](images/first_3d_game/06.jump_and_squash/09.groups_tab.webp)
+
+    ![10.group_create_new](images/first_3d_game/06.jump_and_squash/10.group_create_new.webp)
+
+    ![11.group_scene_groups](images/first_3d_game/06.jump_and_squash/11.group_scene_groups.webp)
+
+    ![12.group_scene_icon](images/first_3d_game/06.jump_and_squash/12.group_scene_icon.webp)
+
 
 ### 6-4. 踏みつぶし
 Player のスクリプトの先頭に追加:
@@ -444,17 +707,32 @@ func squash():
 
 ### 7-1. 当たり判定
 1. `player.tscn` を開き、Player に **Area3D** を追加して、名前を `MobDetector`
+
+    ![01.adding_area_node](images/first_3d_game/07.killing_player/01.adding_area_node.webp)
+
 2. その子に **CollisionShape3D** を追加し、**Shape** を **New CylinderShape3D**
+
+    ![02.cylinder_shape](images/first_3d_game/07.killing_player/02.cylinder_shape.webp)
+
 3. 円柱の形を調整:
+
+    ![03.cylinder_in_editor](images/first_3d_game/07.killing_player/03.cylinder_in_editor.png)
+
    - **低く**して、キャラクターの**上の方**に置く（ジャンプすると、敵に当たらない高さになる）
    - 球より**少し広く**する（踏む前に、横から触れたら先にやられるように）
 4. MobDetector を選び、Inspector で:
+
+    ![04.mob_detector_properties](images/first_3d_game/07.killing_player/04.mob_detector_properties.webp)
+
    - **Monitorable** を**オフ**（他からは、検知されない）
    - **Collision > Layer** は**すべてオフ**
    - **Collision > Mask** は `enemies` のみ
 
 ### 7-2. シグナルとコード
 1. MobDetector の **Signals** タブで **body_entered** をダブルクリック → 接続先 **Player** → **Connect**
+
+    ![05.body_entered_signal](images/first_3d_game/07.killing_player/05.body_entered_signal.webp)
+
 2. Player のスクリプトの**先頭**に、シグナルを追加:
 
 ```gdscript
@@ -476,6 +754,9 @@ func _on_mob_detector_body_entered(body):
 ### 7-3. ゲームを止める
 1. `main.tscn` を開き、**Player** を選ぶ
 2. **Signals** タブで **hit** をダブルクリック → 接続先 **Main** → **Connect**
+
+    ![06.player_hit_signal](images/first_3d_game/07.killing_player/06.player_hit_signal.webp)
+
 3. Main のスクリプトに:
 
 ```gdscript
@@ -494,15 +775,36 @@ func _on_player_hit():
 ### 8-1. スコア表示
 1. Main に **Control** を追加し、名前を `UserInterface`（2D画面で作業する）
 2. その子に **Label** を追加し、名前を `ScoreLabel`
+
+    ![01_label_node](images/first_3d_game/08.score_and_replay/01_label_node.webp)
+
 3. **Text** を `Score: 0`
+
+    ![02_score_placeholder](images/first_3d_game/08.score_and_replay/02_score_placeholder.webp)
+
 4. 背景が白いので、文字を黒にする: Inspector の **Theme Overrides > Colors > Font Color** を有効にして黒
+
+    ![03_score_font_color](images/first_3d_game/08.score_and_replay/03_score_font_color.webp)
+
 5. ビューポートで、文字を動かして、左上の端から離す
+
+    ![04_score_label_moved](images/first_3d_game/08.score_and_replay/04_score_label_moved.webp)
+
 
 ### 8-2. テーマ（フォント）
 1. `UserInterface` を選び、Inspector の **Theme > Theme** → **New Theme**
+
+    ![05_creating_theme](images/first_3d_game/08.score_and_replay/05_creating_theme.webp)
+
 2. 作ったテーマをクリックすると、下部パネルにプレビューが出る
+
+    ![06_theme_preview](images/first_3d_game/08.score_and_replay/06_theme_preview.webp)
+
 3. FileSystem の `fonts/Montserrat-Medium.ttf` を、**Default Font** へドラッグ＆ドロップ
 4. **Default Font Size** を `22` にする
+
+    ![07_font_size](images/first_3d_game/08.score_and_replay/07_font_size.webp)
+
 
 ### 8-3. スコアのコード
 ScoreLabel にスクリプトを付けます。
@@ -528,13 +830,29 @@ func _on_mob_squashed():
 
 ✅ 実行 → 敵を踏むと、スコアが増える。
 
+![09_score_in_game](images/first_3d_game/08.score_and_replay/09_score_in_game.png)
+
+
 ### 8-4. リトライ表示
 1. `UserInterface` の子に **ColorRect** を追加し、名前を `Retry`
 2. ツールバーの **Anchor Preset** > **Full Rect**
+
+    ![10_anchor_preset](images/first_3d_game/08.score_and_replay/10_anchor_preset.webp)
+
+    ![11_full_rect_option](images/first_3d_game/08.score_and_replay/11_full_rect_option.webp)
+
+    ![12_anchors_updated](images/first_3d_game/08.score_and_replay/12_anchors_updated.webp)
+
    - ⚠ これだけだと、ほとんど変化がない。**`UserInterface` にも Full Rect を適用**すると、`Retry` が画面全体に広がる（UI部品は、親の大きさが基準のため）
 3. Retry の **Color** を、暗くて**半透明**にする（カラーピッカーの **A**（アルファ）を左に下げる）
+
+    ![13_retry_color_picker](images/first_3d_game/08.score_and_replay/13_retry_color_picker.webp)
+
 4. Retry の子に **Label** を追加し、**Text** を `Press Enter to retry.`
 5. その Label の **Anchor Preset** を **Center**
+
+    ![14_center_option](images/first_3d_game/08.score_and_replay/14_center_option.webp)
+
 
 ### 8-5. リトライのコード
 Main のスクリプトに追加・変更します。
@@ -563,15 +881,31 @@ func _unhandled_input(event):
 普通に Main に音を置くと、リトライでシーンを読み込み直したとき、曲も最初に戻ります。そこで**オートロード**（ゲーム開始時に、シーンの外に自動で読み込まれるもの）を使います。
 
 1. Scene > **New Scene** → **Other Node** → **AudioStreamPlayer** → 名前を `MusicPlayer`
+
+    ![15_new_scene](images/first_3d_game/08.score_and_replay/15_new_scene.webp)
+
+    ![16_music_player_node](images/first_3d_game/08.score_and_replay/16_music_player_node.webp)
+
 2. FileSystem の `art/House In a Forest Loop.ogg` を、Inspector の **Stream** へドラッグ＆ドロップ
 3. **Autoplay** をオン
+
+    ![17_music_node_properties](images/first_3d_game/08.score_and_replay/17_music_node_properties.webp)
+
 4. `music_player.tscn` として保存
 5. Project > Project Settings > **Globals > Autoload** タブ
 6. **Path** の横のフォルダアイコンから `music_player.tscn` を選び、**Add**
 
+    ![18_register_autoload](images/first_3d_game/08.score_and_replay/18_register_autoload.webp)
+
+
 ✅ 実行すると、BGMが流れる。リトライしても、曲が続く。
 
 > 実行中は Scene ドックに **Remote** と **Local** のタブが出ます。Remote で、動いているゲームのノードの木が見えます（MusicPlayer も、そこに並んでいます）。
+
+![19_scene_dock_tabs](images/first_3d_game/08.score_and_replay/19_scene_dock_tabs.webp)
+
+![20_remote_scene_tree](images/first_3d_game/08.score_and_replay/20_remote_scene_tree.webp)
+
 
 ---
 
@@ -579,41 +913,100 @@ func _unhandled_input(event):
 
 ### 9-1. アニメーションエディタ
 1. `player.tscn` を開き、**Player** に **AnimationPlayer** を追加
+
+    ![animation_player_dock](images/first_3d_game/09.adding_animations/animation_player_dock.webp)
+
 2. 下部に **Animation** パネルが出る
 3. **Animation > New** → 名前を `float`
+
+    ![02.new_animation](images/first_3d_game/09.adding_animations/02.new_animation.webp)
+
+    ![03.float_name](images/first_3d_game/09.adding_animations/03.float_name.webp)
+
 4. **Autoplay**（自動再生）ボタンと、**Loop**（ループ）ボタンを、オンにする
+
+    ![04.autoplay_and_loop](images/first_3d_game/09.adding_animations/04.autoplay_and_loop.webp)
+
 5. パネルの右上の **ピン**アイコンを押すと、パネルが閉じなくなる（ノードの選択を外しても残る）
+
+    ![05.pin_icon](images/first_3d_game/09.adding_animations/05.pin_icon.webp)
+
 6. アニメーションの長さを `1.2` 秒にする
+
+    ![06.animation_duration](images/first_3d_game/09.adding_animations/06.animation_duration.webp)
+
 
 ### 9-2. 浮遊（float）のキーフレーム
 キーフレーム = 「ある時間の、ある値」。時間カーソルの位置に、作られます。
 
 1. **Character** ノードを選び、Inspector の **Transform** を開く
 2. **Position** と **Rotation** の横の**鍵アイコン**をクリック
+
+    ![09.creating_first_keyframe](images/first_3d_game/09.adding_animations/09.creating_first_keyframe.webp)
+
 3. 聞かれたら、**RESET トラックを作る**（初期値）を選ぶ
+
+    ![10.initial_keys](images/first_3d_game/09.adding_animations/10.initial_keys.webp)
+
 4. 2本のトラックにひし形が出る。ドラッグで、Position のキーを **0.3 秒**、Rotation のキーを **0.1 秒**へ動かす
+
+    ![11.moving_keys](images/first_3d_game/09.adding_animations/11.moving_keys.webp)
+
 5. 時間カーソルを **0.5 秒**に動かす（グレーの目盛りをクリック、または数値入力）
 6. Inspector で、Position の **Y** を `0.65`、Rotation の **X** を `8` にする
+
+    ![12.second_keys_values](images/first_3d_game/09.adding_animations/12.second_keys_values.webp)
+
 7. もう一度、2つの鍵アイコンをクリックして、キーを打つ
 8. Position のキーを、ドラッグで **0.7 秒**に動かす
+
+    ![13.second_keys](images/first_3d_game/09.adding_animations/13.second_keys.webp)
+
+    ![second_keys_both](images/first_3d_game/09.adding_animations/second_keys_both.webp)
+
 9. 時間カーソルを**終点（1.2 秒）**に動かす
 10. Position の **Y** を `0.35` 前後、Rotation の **X** を `-9` にして、また鍵アイコンでキーを打つ
 
+    ![animation_final_keyframes](images/first_3d_game/09.adding_animations/animation_final_keyframes.webp)
+
+
 プレビュー再生は **Shift+D**、停止は **S**。
+
+![14.play_button](images/first_3d_game/09.adding_animations/14.play_button.webp)
+
 
 ### 9-3. 動きを自然にする（イージング）
 初期状態の動きは機械的です。キーフレームの間の変化のしかたを調整します。
 
 1. 最初の2つのキーを、ドラッグで囲んで、選ぶ
+
+    ![15.box_select](images/first_3d_game/09.adding_animations/15.box_select.webp)
+
 2. Inspector の **Easing** のカーブを、**左に引っ張る**（ease-out: 最初は速く、後半はゆっくり）
+
+    ![16.easing_property](images/first_3d_game/09.adding_animations/16.easing_property.webp)
+
+    ![17.ease_out](images/first_3d_game/09.adding_animations/17.ease_out.webp)
+
 3. Rotation トラックの2つ目のキーにも、同じく ease-out をかける
+
+    ![18.ease_out_second_rotation_key](images/first_3d_game/09.adding_animations/18.ease_out_second_rotation_key.webp)
+
 4. Position の2つ目のキーは、逆にカーブを**右へ**引っ張る
+
+    ![19.ease_in_second_translation_key](images/first_3d_game/09.adding_animations/19.ease_in_second_translation_key.webp)
+
+    ![curves](images/first_3d_game/09.adding_animations/curves.webp)
+
 
 再生して違いを確認します。
 
 > アニメーションは、毎フレーム、対象のプロパティを上書きします。そのため、アニメーションさせたのは **Character** で、**Pivot** は触っていません。コードでは、Pivot の向きを、アニメーションの上に重ねて変えられます。
 
 ✅ 実行 → 浮かぶように動く。足元が床に近ければ、Pivot を少し上げる。
+
+![20.float_animation](images/first_3d_game/09.adding_animations/20.float_animation.gif)
+
 
 ### 9-4. コードでアニメーションを制御
 Player の `_physics_process()` で、`direction` を調べている `if` の中に追加し、`else` も追加します。
@@ -653,6 +1046,9 @@ Mob のスクリプトの `initialize()` の最後に追加（敵の速さに合
 
 ### 完成おめでとうございます
 3Dゲームができました。次は、公式マニュアルで、スクリプト、3D、物理、入力のセクションを読むのがおすすめです。
+
+![squash-the-creeps-final](images/first_3d_game/squash-the-creeps-final.gif)
+
 
 ---
 

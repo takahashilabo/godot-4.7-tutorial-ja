@@ -21,6 +21,9 @@ Godotはオブジェクト指向の考え方で作られています。クラス
 - **Learn GDScript From Zero**（GDQuest）: ブラウザで動く、対話式のGDScript入門
   https://gdquest.github.io/learn-gdscript
 
+![learn_gdscript_app](images/introduction/learn_gdscript_app.webp)
+
+
 > ※ 本チュートリアルは、変数・if文・関数が何かをなんとなく知っていれば進められるように書いています。不安な方は、上の教材を1〜2時間やってから第2章へ進むのがおすすめです。
 
 ---
@@ -40,6 +43,11 @@ Godotのゲームは **「ノード」を木のようにつないだもの** で
 
 すべてのノードに共通するのは、名前を持つこと、プロパティ（設定値）を編集できること、別のノードを子として持てることです。
 
+![key_concepts_character_nodes](images/introduction/key_concepts_character_nodes.webp)
+
+![key_concepts_node_menu](images/introduction/key_concepts_node_menu.webp)
+
+
 > **名前の見分け方**: 2D用のノードは名前の最後が「2D」、3D用は「3D」です（例: Sprite2D と MeshInstance3D）。Godot 4以降、3Dの基本ノードは Node3D と呼びます（昔の「Spatial」は廃止）。
 
 ### シーン（Scene）
@@ -57,8 +65,16 @@ Player (CharacterBody2D)   ← 一番上（ルートノード）
 シーンには何でもなれます。キャラクター、武器、メニュー、1軒の家、ステージ全体。
 **シーンは別のシーンの中に置く（入れ子にする）ことができます。** 置いたシーンは、エディタ上では1個のノードのように見えます。
 
+![key_concepts_scene_example](images/introduction/key_concepts_scene_example.webp)
+
+![key_concepts_main_menu](images/introduction/key_concepts_main_menu.webp)
+
+
 ### シーンツリー（Scene tree）
 ゲームの全シーンが集まった、1本の大きな木です。シーンはノードの木なので、シーンツリーもノードの木です。「ゲーム = シーンの木」と考えると整理しやすくなります。
+
+![key_concepts_scene_tree](images/introduction/key_concepts_scene_tree.webp)
+
 
 ### シグナル（Signal）
 ノードが「何か起きた」と知らせるための**合図（メッセージ）**です。
@@ -67,6 +83,9 @@ Player (CharacterBody2D)   ← 一番上（ルートノード）
 - キャラクターが敵に触れたら `body_entered` というシグナルが出る
 
 別のノードが「そのシグナルが出たらこの関数を実行して」と登録（接続）しておくと、反応させられます。ノード同士を直接つなぎこまなくて済むので、作りが柔らかくなります。
+
+![key_concepts_signals](images/introduction/key_concepts_signals.webp)
+
 
 ### まとめ
 | 用語 | 一言で |
@@ -87,27 +106,20 @@ Godotを起動して最初に出る画面です。
 - **Asset Library タブ**: 無料のデモやアドオンを探す。初回は「Go Online」ボタンを押すまでネットに接続しない（プライバシーのため）
 - **Settings メニュー**: エディタの言語、テーマ、表示倍率などを変えられる
 
+    ![editor_intro_project_manager](images/introduction/editor_intro_project_manager.webp)
+
+    ![editor_intro_settings](images/introduction/editor_intro_settings.webp)
+
+
 > ※ エディタ内の表示を日本語にしたい場合は、Settings で Language を変更できます。ただしこのチュートリアルは、公式ドキュメントと照合しやすいよう**英語表記**で書いています。
 
 ### エディタの主な領域
 プロジェクトを開くと、次のような画面になります。
 
-```
-┌──────────────────────────────────────────────────────────────┐
-│ メインメニュー │ [2D][3D][Script][Game][AssetLib] │ ▶ 実行ボタン類 │  ← 上端
-├──────────────────────────────────────────────────────────────┤
-│ シーンタブ（+で新しいシーン）                          集中モード │
-├──────────┬─────────────────────────────┬─────────────────┤
-│ Scene     │                             │ Inspector       │
-│ (ノード一覧)│     Viewport（ビューポート）   │ (選んだノードの   │
-│           │       ここでシーンを編集       │  設定値)         │
-├──────────┤                             │                 │
-│ FileSystem │                             │ Signals / Groups │
-│ (ファイル一覧)│                            │ タブ             │
-├──────────┴─────────────────────────────┴─────────────────┤
-│ 下部パネル: Output / Debugger / Animation / Audio など（普段は折りたたみ）│
-└──────────────────────────────────────────────────────────────┘
-```
+![editor_intro_editor_empty](images/introduction/editor_intro_editor_empty.webp)
+
+> ※ 公式ドキュメントの画像です（4.4世代の画面で、右上のタブ名が Inspector / Node / History になっています。4.6以降は Inspector / Signals / Groups です）。
+
 
 | 領域 | 役割 |
 |---|---|
@@ -119,6 +131,17 @@ Godotを起動して最初に出る画面です。
 | Inspector | 選んだノードのプロパティを編集 |
 | Signals / Groups タブ | Inspectorの横のタブ。シグナルの接続、グループの設定 |
 | 下部パネル | デバッグ出力、アニメーションエディタなど。クリックで縦に開く |
+
+![editor_intro_top_menus](images/introduction/editor_intro_top_menus.webp)
+
+![editor_intro_scene_dock](images/introduction/editor_intro_scene_dock.webp)
+
+![editor_intro_filesystem_dock](images/introduction/editor_intro_filesystem_dock.webp)
+
+![editor_intro_inspector_dock](images/introduction/editor_intro_inspector_dock.webp)
+
+![editor_intro_bottom_panels](images/introduction/editor_intro_bottom_panels.webp)
+
 
 > ⚠ ドックの位置は人によって違うことがあります。ドックは移動・リサイズできます。見つからないときは、名前（Scene / FileSystem / Inspector）を手がかりに探してください。
 
@@ -133,6 +156,17 @@ Godotを起動して最初に出る画面です。
 | **Game** | 実行中のゲームがここに表示される。実行中に一時停止したり調整できるが、**変更は保存されない** |
 | **AssetLib** | 無料のアドオンや素材を探す |
 
+![editor_intro_workspace_2d](images/introduction/editor_intro_workspace_2d.webp)
+
+![editor_intro_workspace_3d](images/introduction/editor_intro_workspace_3d.webp)
+
+![editor_intro_workspace_game](images/introduction/editor_intro_workspace_game.webp)
+
+![editor_intro_workspace_script](images/introduction/editor_intro_workspace_script.webp)
+
+![editor_intro_workspace_assetlib](images/introduction/editor_intro_workspace_assetlib.webp)
+
+
 > ⚠ ノードを追加したのに画面が3Dのまま、または何も見えないときは、上部の「2D」ボタンを押してみてください。2Dのゲームなのに3D画面が開いているのは、初心者がよく出会う状態です。
 
 ### 組み込みリファレンス（わからない言葉が出たら）
@@ -141,6 +175,13 @@ Godotを起動して最初に出る画面です。
 - どこでも **F1** キー（macOSは Opt + Space）で検索窓が開く
 - コードエディタで、関数名や変数名を **Ctrl + クリック**（macOSは Cmd + クリック）するとその説明に飛ぶ
 - Scene ドックでノードを右クリック > Open Documentation
+
+    ![editor_intro_search_help_button](images/introduction/editor_intro_search_help_button.webp)
+
+    ![editor_intro_search_help](images/introduction/editor_intro_search_help.webp)
+
+    ![editor_intro_help_class_animated_sprite](images/introduction/editor_intro_help_class_animated_sprite.webp)
+
 
 ---
 

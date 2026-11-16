@@ -23,6 +23,9 @@ Main  ← ゲーム全体を動かす
 
 ### 1-1. プロジェクトを作る
 1. プロジェクトマネージャーで「Create」
+
+    ![new-project-button](images/first_2d_game/new-project-button.webp)
+
 2. Project Name に `dodge_the_creeps`、Project Path は任意
 3. 他は初期値のまま「Create」
 
@@ -32,13 +35,22 @@ Main  ← ゲーム全体を動かす
 
 ✅ エディタの FileSystem ドックに `art` と `fonts` が出る（出ないときは、エディタのウィンドウをクリックして更新を待つ）。
 
+![folder-content](images/first_2d_game/folder-content.webp)
+
+
 ### 1-3. 画面サイズを縦長にする
 このゲームは縦長の画面で遊びます。
 
 1. メニュー **Project > Project Settings** を開く
 2. 左の一覧で **Display > Window** を開く
 3. **Viewport Width** を `480`、**Viewport Height** を `720` にする
+
+    ![setting-project-width-and-height](images/first_2d_game/setting-project-width-and-height.webp)
+
 4. 同じ画面の下の方の **Stretch** で、**Mode** を `canvas_items`、**Aspect** を `keep` にする
+
+    ![setting-stretch-mode](images/first_2d_game/setting-stretch-mode.webp)
+
    - これで、画面サイズが違っても、同じ見た目で拡大縮小される
 5. ウィンドウを閉じる
 
@@ -47,16 +59,28 @@ Main  ← ゲーム全体を動かす
 ### 1-4. ファイルの置き場所
 小さなゲームなので、シーンもスクリプトも、プロジェクトの根（`res://`）にそのまま保存します。
 
+![filesystem_dock](images/first_2d_game/filesystem_dock.webp)
+
+
 ---
 
 ## パート2: プレイヤーのシーンを作る
 
 ### 2-1. 根ノードを作る
 1. Scene ドックの「Other Node」→ **Area2D** を作成
+
+    ![add_node](images/first_2d_game/add_node.webp)
+
    - Area2D は「何かが重なったり、ぶつかったかを検知する」ノード
 2. Area2D の横に**警告マーク（黄色い三角）**が出る。これは「当たり判定の形がまだない」という意味。**今は無視**してOK（あとで作ります）
+
+    ![no_shape_warning](images/first_2d_game/no_shape_warning.webp)
+
 3. ノード名をダブルクリックして `Player` に変える
 4. Player を選んだまま、ビューポート上部のツールバーにある**鍵アイコンの右隣のアイコン**（ツールチップ: 「選択したノードを子ごとにグループ化」）をクリック
+
+    ![lock_children](images/first_2d_game/lock_children.webp)
+
    - これで、子ノードをクリックしても、親の Player が選ばれる。子を誤って動かすのを防げる
 5. **Ctrl+S**（macOS: Cmd+S）で `player.tscn` として保存
 
@@ -66,10 +90,19 @@ Main  ← ゲーム全体を動かす
 1. Player を選び、**Ctrl+A**（macOS: Cmd+A）で子ノードを追加 → **AnimatedSprite2D** を作成
 2. AnimatedSprite2D にも警告が出る。これは「SpriteFrames（アニメーションのリスト）がない」という意味
 3. AnimatedSprite2D を選び、Inspector の **Animation** セクションにある **Sprite Frames** を `[empty]` → **New SpriteFrames**
+
+    ![new_spriteframes](images/first_2d_game/new_spriteframes.webp)
+
 4. できた SpriteFrames をクリック → 下部に **SpriteFrames パネル**が開く
+
+    ![spriteframes_panel](images/first_2d_game/spriteframes_panel.webp)
+
 5. パネル左のアニメーション一覧にある `default` をクリックして、名前を **`walk`** に変える
 6. **Add Animation** ボタンで、新しいアニメーションを作り、名前を **`up`** にする
 7. FileSystem で `art` フォルダを開き、画像を**ドラッグ＆ドロップ**で、右側の **Animation Frames** 欄に入れる
+
+    ![spriteframes_panel2](images/first_2d_game/spriteframes_panel2.webp)
+
 
 | アニメーション | 画像（2枚ずつ） |
 |---|---|
@@ -80,12 +113,21 @@ Main  ← ゲーム全体を動かす
 
 8. 画像が大きいので、AnimatedSprite2D を選び、Inspector の **Node2D > Scale** を `(0.5, 0.5)` にする
 
+    ![player_scale](images/first_2d_game/player_scale.webp)
+
+
 ### 2-3. 当たり判定
 1. Player を選び、子ノード **CollisionShape2D** を追加
 2. Inspector の **Shape** を `[empty]` → **New CapsuleShape2D**
 3. ビューポートのオレンジの点をドラッグして、カプセルがキャラクターを覆うように調整
 
+    ![player_coll_shape](images/first_2d_game/player_coll_shape.webp)
+
+
 ✅ Player の警告マークが消える。Scene ドックはこうなる:
+
+![player_scene_nodes](images/first_2d_game/player_scene_nodes.webp)
+
 
 ```
 Player (Area2D)
@@ -101,7 +143,13 @@ Player (Area2D)
 
 ### 3-1. スクリプトをつける
 1. Player を選び、Scene ドック上部の **Attach Script** ボタン（巻物に＋のアイコン）をクリック
+
+    ![add_script_button](images/first_2d_game/add_script_button.webp)
+
 2. 設定はそのままで **Create**
+
+    ![attach_node_window](images/first_2d_game/attach_node_window.webp)
+
 
 `player.gd` が開きます。最初は、テンプレートで `_ready()` と `_process()` が入っています。先頭を次のように書き換えます。
 
@@ -113,6 +161,9 @@ var screen_size # 画面のサイズ
 ```
 
 - `@export` を付けた変数は、**Inspector で値を変えられる**ようになる（Player を選ぶと、スクリプト名のセクションに `Speed` が出る）
+
+    ![export_variable](images/first_2d_game/export_variable.webp)
+
 
 ### 3-2. 準備（_ready）
 `_ready()` を次のようにします。
@@ -129,14 +180,26 @@ func _ready():
 
 1. メニュー **Project > Project Settings** > 上部の **Input Map** タブ
 2. 上の入力欄に `move_right` と入力して **Add** を押す
+
+    ![input-mapping-add-action](images/first_2d_game/input-mapping-add-action.webp)
+
 3. 追加された行の右側にある **「+」** をクリック
+
+    ![input-mapping-add-key](images/first_2d_game/input-mapping-add-key.webp)
+
 4. 「Listening for Input...」と出るので、キーボードの **→（右矢印）** を押す
+
+    ![input-mapping-event-configuration](images/first_2d_game/input-mapping-event-configuration.webp)
+
 5. **OK** を押す
 6. 同じようにして、あと3つ追加する:
    - `move_left` ← ←（左矢印）
    - `move_up` ← ↑（上矢印）
    - `move_down` ← ↓（下矢印）
 7. **Close** で閉じる
+
+    ![input-mapping-completed](images/first_2d_game/input-mapping-completed.webp)
+
 
 > 1つのアクションに、複数のキーやゲームパッドのボタンを割り当てることもできます。
 
@@ -216,10 +279,16 @@ signal hit
 
 次に、Area2D が持っている `body_entered` シグナル（何かが入ってきたときに出る）を、自分につなぎます。
 1. Player を選び、右の **Signals** タブを開く
+
+    ![player_signals](images/first_2d_game/player_signals.webp)
+
 2. **body_entered(body: Node2D)** をダブルクリック
 3. 設定は変えずに **Connect** をクリック
 
 ✅ スクリプトに `_on_body_entered` 関数が追加される。左端に緑の接続アイコンが付く。
+
+![player_signal_connection](images/first_2d_game/player_signal_connection.webp)
+
 
 > ⚠ 緑のアイコンは「接続しようとしている」というだけで、関数が正しく存在するという意味ではありません。関数名のつづりを確認してください。外部エディタ（VS Code等）を使っていると、自動で関数が作られないことがあります。その場合は自分で書きます。
 
@@ -267,6 +336,9 @@ Mob (RigidBody2D)
 4. Mob を選び、Inspector の **RigidBody2D** セクションの **Gravity Scale** を `0`（落ちないようにする）
 5. 同じ Mob の Inspector の **CollisionObject2D > Collision** を開き、**Mask** の **`1` のチェックを外す**（敵どうしが衝突しないようにする）
 
+    ![set_collision_mask](images/first_2d_game/set_collision_mask.webp)
+
+
 ### 4-2. 見た目
 1. AnimatedSprite2D に、プレイヤーと同じように SpriteFrames を作る。今回は**3つ**のアニメーション
 
@@ -279,6 +351,9 @@ Mob (RigidBody2D)
 > ※ 画像ファイル名は art フォルダ内を見て選んでください。
 
 2. 各アニメーションの **Animation Speed** を `3` にする（アニメーションごとに設定する）。右の再生ボタンでプレビューできる
+
+    ![mob_animations](images/first_2d_game/mob_animations.webp)
+
 3. AnimatedSprite2D の **Scale** を `(0.75, 0.75)`
 4. CollisionShape2D の **Shape** に **CapsuleShape2D** を設定し、**Rotation** を `90` にして、画像に合わせる（Inspector の Transform の下）
 5. VisibleOnScreenNotifier2D は、画面から出たことを知らせるノード。小さいままでもOK
@@ -317,6 +392,9 @@ func _on_visible_on_screen_notifier_2d_screen_exited():
 1. Scene > **New Scene** で、**Node**（Node2D ではなく Node）を作り、名前を `Main` にする
    - Main は、ゲームの流れを管理するだけで、2Dの位置は要らないため
 2. Scene ドックの **Instantiate Child Scene**（鎖アイコン）を押して、`player.tscn` をインスタンス化
+
+    ![instance_scene](images/first_2d_game/instance_scene.webp)
+
 3. Main を選び、次の子ノードを追加して、名前を付ける:
 
 | ノード | 名前 | 役割 |
@@ -338,11 +416,23 @@ func _on_visible_on_screen_notifier_2d_screen_exited():
 ### 5-2. 敵の出現位置（Path2D）
 1. Main に **Path2D** を追加して、名前を `MobPath` にする
 2. Path2D を選ぶと、ビューポート上部に新しいボタンが出る。真ん中の **Add Point** を選ぶ
+
+    ![path2d_buttons](images/first_2d_game/path2d_buttons.webp)
+
 3. スナップを使うために、ツールバーの磁石アイコン（**Use Grid Snap** と **Use Smart Snap**）を、2つともオンにする
+
+    ![grid_snap_button](images/first_2d_game/grid_snap_button.webp)
+
 4. 画面の**4つの角**を、**時計回り**に順にクリックして点を作る。左上 → 右上 → 右下 → 左下
    - ⚠ 反時計回りだと、敵が**外向き**に出てしまいます
 5. 4つ目の点を作ったら、**Close Curve** ボタンを押して、閉じる
+
+    ![draw_path2d](images/first_2d_game/draw_path2d.gif)
+
 6. MobPath の子に **PathFollow2D** を追加して、名前を `MobSpawnLocation` にする
+
+    ![main_scene_nodes](images/first_2d_game/main_scene_nodes.webp)
+
    - パス上の位置を選ぶと、そこでの向きに自動で回転してくれる
 
 ### 5-3. Main のスクリプト
@@ -457,7 +547,13 @@ func _ready():
 ### 6-2. フォントと大きさ
 1. ScoreLabel を選び、Inspector の **Text** に `0` と入力
 2. **Theme Overrides > Fonts** の項目で **Load** → `fonts/Xolonium-Regular.ttf` を選ぶ
+
+    ![custom_font_load_font](images/first_2d_game/custom_font_load_font.webp)
+
 3. **Theme Overrides > Font Sizes** で `64` にする
+
+    ![custom_font_size](images/first_2d_game/custom_font_size.webp)
+
 4. **Message** と **StartButton** にも、同じ設定（フォントとサイズ）をする
 
 ### 6-3. 配置
@@ -465,6 +561,9 @@ func _ready():
 1. Text = `0`
 2. **Horizontal Alignment** と **Vertical Alignment** を `Center`
 3. **Anchor Preset**（ツールバーの、アンカー設定のメニュー）を **Center Top**
+
+    ![ui_anchor](images/first_2d_game/ui_anchor.webp)
+
 
 **Message**
 1. Text = `Dodge the Creeps!`
@@ -554,12 +653,21 @@ Main のスクリプトを、次のように変更します。
 
 ✅ F5 で実行 → 「Start」ボタンで始まり、当たると「Game Over」が出て、またスタートできる。
 
+![completed_main_scene](images/first_2d_game/completed_main_scene.webp)
+
+
 ### 6-6. 前のゲームの敵を消す
 Start を押したとき、前回の敵が残っていると不便です。**グループ**を使って、全員を一気に消します。
 
 1. mob.tscn を開き、根の **Mob** を選ぶ
 2. Inspector の隣の **Groups** タブを開き、**+** をクリック
+
+    ![group_tab](images/first_2d_game/group_tab.webp)
+
 3. 名前を `mobs` として **OK**
+
+    ![add_group_dialog](images/first_2d_game/add_group_dialog.webp)
+
 4. Main の `new_game()` に、次を追加:
 
 ```gdscript
@@ -567,6 +675,9 @@ Start を押したとき、前回の敵が残っていると不便です。**グ
 ```
 
 `call_group` は、グループのすべてのノードで、指定した関数を呼びます。
+
+![scene_group_mobs](images/first_2d_game/scene_group_mobs.webp)
+
 
 ---
 
@@ -587,15 +698,27 @@ Start を押したとき、前回の敵が残っていると不便です。**グ
 | DeathSound | gameover.wav |
 
 3. 音楽をループさせたい場合: Music の Stream の右の矢印 > **Make Unique** → Stream をクリック → **Loop** にチェック
+
+    ![unique_resource_music](images/first_2d_game/unique_resource_music.webp)
+
 4. Main のスクリプトに追加:
    - `new_game()` の最後: `$Music.play()`
    - `game_over()` の最後: `$Music.stop()` と `$DeathSound.play()`
 
 ### 7-3. Enter キーで開始
 1. Project > Project Settings > **Input Map** で、アクション `start_game` を追加し、**Enter** キーを割り当てる
+
+    ![input-mapping-start_game](images/first_2d_game/input-mapping-start_game.webp)
+
 2. HUD シーンを開き、**StartButton** の Inspector で **Shortcut** をクリックして、新しい **Shortcut** リソースを作る
+
+    ![start_button_shortcut](images/first_2d_game/start_button_shortcut.webp)
+
 3. **Events** の配列を開き、**Array[InputEvent] (size 0)** をクリックして要素を追加
 4. 新しい **InputEventAction** を作り、**Action** を `start_game` にする
+
+    ![start_button_shortcut2](images/first_2d_game/start_button_shortcut2.webp)
+
 
 ✅ Start ボタンが出ているときに、Enter キーでも始められる。
 
@@ -604,6 +727,9 @@ Input Map で、各アクションの「+」を押して、ゲームパッドの
 
 ### 完成おめでとうございます
 プレイヤー操作、敵の出現、スコア、ゲームオーバー、リトライ、UI、音が揃いました。
+
+![dodge_preview](images/first_2d_game/dodge_preview.gif)
+
 
 ### 友達に遊んでもらうには
 Project > Export で、各OS向けに書き出します。書き出した実行ファイルと PCK ファイルを ZIP にして渡します（プロジェクトのフォルダそのものではなく）。

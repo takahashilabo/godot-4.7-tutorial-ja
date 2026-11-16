@@ -7,10 +7,10 @@ Godot 4.7 の公式ドキュメント（Getting started）を元に、4.7の画�
 
 | 章 | 内容 | 所要時間の目安 |
 |---|---|---|
-| [1 Introduction](1_Introduction.md) | Godotとは何か、基本概念、エディタの画面 | 30分 |
-| [2 Step by step](2_StepByStep.md) | ノードとシーン、インスタンス化、スクリプト、シグナル | 2〜3時間 |
-| [3 Your first 2D game](3_Your_first_2D_game.md) | 2Dゲーム「Dodge the Creeps!」を作る | 3〜4時間 |
-| [4 Your first 3D game](4_Your_first_3D_game.md) | 3Dゲーム「Squash the Creeps」を作る | 4〜6時間 |
+| 1 Introduction | Godotとは何か、基本概念、エディタの画面 | 30分 |
+| 2 Step by step | ノードとシーン、インスタンス化、スクリプト、シグナル | 2〜3時間 |
+| 3 Your first 2D game | 2Dゲーム「Dodge the Creeps!」を作る | 3〜4時間 |
+| 4 Your first 3D game | 3Dゲーム「Squash the Creeps」を作る | 4〜6時間 |
 
 ## 記号の意味
 
@@ -23,6 +23,7 @@ Godot 4.7 の公式ドキュメント（Getting started）を元に、4.7の画�
 - 手順・数値・コードは、4.7の公式ドキュメントのソース（godot-docs の 4.7 ブランチ）に基づいています。
 - 実機の4.7エディタで1行ずつ確認したものではありません。画面が違う箇所があれば、メニュー名やボタン名（英語表記）を手がかりに探してください。
 - 元ドキュメントは CC BY 3.0 ライセンスです。
+- 画像（`images/` フォルダ）は Godot 公式ドキュメント（4.7 ブランチ）のものを、CC BY 3.0 のもとで利用しています。© Juan Linietsky, Ariel Manzur and the Godot community。一部は 4.4〜4.6 世代の画面で、タブ名などが 4.7 と少し違うことがあります。文章の記述を優先してください。
 
 ## 事前準備
 
@@ -64,12 +65,3 @@ Godotのコードエディタは標準でタブ文字を使います。スペー
 - このチュートリアルのコードブロックは、タブでインデントしてあります。
 - 貼り付け後にエラーが出たら、スクリプトエディタのメニュー Edit > Convert Indent to Tabs を実行してください（※）。
 - 「Indented block expected」というエラーは、字下げが足りない行があるという意味です。
-
-## ライセンスと出典
-
-このリポジトリは、Godot Engine の公式ドキュメント（[godot-docs](https://github.com/godotengine/godot-docs) の 4.7 ブランチ、
-Juan Linietsky、Ariel Manzur と Godot コミュニティ）を元に、日本語で書き直し・補足した派生物です。
-元のドキュメントは [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/) で公開されています。
-このリポジトリの文章も、同じく CC BY 3.0 で公開します（出典の表示をお願いします）。
-
-素材ファイル（zip）は含まれていません。上の URL から公式のものを入手してください。
