@@ -786,7 +786,7 @@ func _on_player_hit():
 
     ![02_score_placeholder](images/first_3d_game/08.score_and_replay/02_score_placeholder.webp)
 
-4. 背景が白いので、文字を黒にする: Inspector の **Theme Overrides > Colors > Font Color** を有効にして黒
+4. 背景が白いので、文字を黒にする: Inspector の **Theme Overrides**（折りたたまれている）を開き、その中の **Colors** を開いて **Font Color** のチェックボックスをオンにし、色を黒にする
 
     ![03_score_font_color](images/first_3d_game/08.score_and_replay/03_score_font_color.webp)
 
@@ -796,7 +796,7 @@ func _on_player_hit():
 
 
 ### 8-2. テーマ（フォント）
-1. `UserInterface` を選び、Inspector の **Theme > Theme** → **New Theme**
+1. `UserInterface` を選び、Inspector を下へスクロールし、**Theme**（折りたたまれている）を開く。中の **Theme** 欄 → **New Theme**
 
     ![05_creating_theme](images/first_3d_game/08.score_and_replay/05_creating_theme.webp)
 

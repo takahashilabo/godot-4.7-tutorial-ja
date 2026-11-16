@@ -390,7 +390,7 @@ func _on_visible_on_screen_notifier_2d_screen_exited():
 ## パート5: メインのシーン
 
 ### 5-1. ノードを作る
-1. Scene > **New Scene** で、**Node**（Node2D ではなく Node）を作り、名前を `Main` にする
+1. Scene > **New Scene** → 左の「Create Root Node」から **Other Node** を選び、検索欄に `Node` と入力して先頭の **Node**（Node2D ではなく Node）を **Create**。名前を `Main` にする（名前はノードをダブルクリックか F2 で変更）
    - Main は、ゲームの流れを管理するだけで、2Dの位置は要らないため
 2. Scene ドックの **Instantiate Child Scene**（鎖アイコン）を押して、`player.tscn` をインスタンス化
 
@@ -722,7 +722,7 @@ Start を押したとき、前回の敵が残っていると不便です。**グ
 
     ![input-mapping-start_game](images/first_2d_game/input-mapping-start_game.webp)
 
-2. HUD シーンを開き、**StartButton** の Inspector で **Shortcut** をクリックして、新しい **Shortcut** リソースを作る
+2. HUD シーンを開き、**StartButton** の Inspector を下へスクロールし、**Shortcut** という見出し（折りたたまれている）を開く。中の **Shortcut** 欄（`<empty>`）をクリックして、新しい **Shortcut** リソースを作る
 
     ![start_button_shortcut](images/first_2d_game/start_button_shortcut.webp)
 
