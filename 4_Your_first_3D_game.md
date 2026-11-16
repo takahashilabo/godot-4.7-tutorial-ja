@@ -594,7 +594,7 @@ func _on_mob_timer_timeout():
 
 
 レイヤーに名前を付けます。
-1. Project > Project Settings > **Layer Names > 3D Physics**
+1. Project > Project Settings > **General** タブ。左側のリストを**一番下までスクロール**すると **Layer Names** があり、その中の **3D Physics** を選ぶ（上のほうにある Physics > 3D とは別物なので注意）。右に Layer 1〜 の欄が並ぶので、名前を入力
 
     ![02.project_settings](images/first_3d_game/06.jump_and_squash/02.project_settings.webp)
 
@@ -607,7 +607,7 @@ func _on_mob_timer_timeout():
     ![06.named_checkboxes](images/first_3d_game/06.jump_and_squash/06.named_checkboxes.webp)
 
 
-各ノードの設定をします。Inspector の **Collision** セクションで、Layer と Mask のボタンを切り替えます。
+各ノードの設定をします。Inspector の **Collision** セクション（折りたたまれているので開く）で、Layer と Mask のボタンを切り替えます。
 
 | ノード | Layer | Mask |
 |---|---|---|
