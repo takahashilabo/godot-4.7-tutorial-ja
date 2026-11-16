@@ -412,11 +412,11 @@ func _on_visible_on_screen_notifier_2d_screen_exited():
 | MobTimer | Wait Time = `0.5` |
 | ScoreTimer | Wait Time = `1` |
 | StartTimer | Wait Time = `2`、**One Shot** = オン |
-| StartPosition | Position = `(240, 450)` |
+| StartPosition | Position = `(240, 450)`（Inspector の **Node2D > Transform** を開く） |
 
 ### 5-2. 敵の出現位置（Path2D）
 1. Main に **Path2D** を追加して、名前を `MobPath` にする
-2. Path2D を選ぶと、ビューポート上部に新しいボタンが出る。真ん中の **Add Point** を選ぶ
+2. Path2D を選ぶと、ビューポート上部のツールバー右端に、アイコンだけのボタンが5つ出る（名前はマウスを重ねたときのツールチップで確認できる）。左から2番目の **Add Point** を選ぶ。一番右の ≟ のようなアイコンが **Close Curve**
 
     ![path2d_buttons](images/first_2d_game/path2d_buttons.webp)
 
@@ -426,7 +426,7 @@ func _on_visible_on_screen_notifier_2d_screen_exited():
 
 4. 画面の**4つの角**を、**時計回り**に順にクリックして点を作る。左上 → 右上 → 右下 → 左下
    - ⚠ 反時計回りだと、敵が**外向き**に出てしまいます
-5. 4つ目の点を作ったら、**Close Curve** ボタンを押して、閉じる
+5. 4つ目の点を作ったら、ツールバー一番右（Options の左隣）の **Close Curve** ボタンを押して、閉じる
 
     ![draw_path2d](images/first_2d_game/draw_path2d.gif)
 
@@ -449,6 +449,8 @@ var score
 Main を選ぶと、Inspector に **Mob Scene** が出ます。**FileSystem の `mob.tscn` をそこへドラッグ＆ドロップ**します（これを忘れると、敵が出ません）。
 
 ### 5-4. シグナルをつなぐ
+> ⚠ 右パネルのタブ（Inspector / Signals / Groups）は幅が狭いと左右に隠れます。Signals を開いたあと Inspector が見えなくなったら、タブ右上の **◀ ▶ ボタン**で送り戻してください。
+
 **(a) プレイヤーの hit を Main へ**
 1. Scene ドックで、Player を選ぶ
 2. Signals タブで **hit** をダブルクリック
