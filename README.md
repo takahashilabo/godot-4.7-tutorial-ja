@@ -23,7 +23,7 @@ Godot 4.7 の公式ドキュメント（Getting started）を元に、4.7の画�
 - 手順・数値・コードは、4.7の公式ドキュメントのソース（godot-docs の 4.7 ブランチ）に基づいています。
 - 実機の4.7エディタで1行ずつ確認したものではありません。画面が違う箇所があれば、メニュー名やボタン名（英語表記）を手がかりに探してください。
 - 元ドキュメントは CC BY 3.0 ライセンスです。
-- 4.7.2（macOS）の実機で、一部の画面と手順を確認済みです（プロジェクト作成、ノードの追加、実行、メインシーン、Project Settings、Signals タブ）。確認の結果、Asset Store の名称、メインシーンのダイアログ、Stretch の初期値、Autoload の画面、サンプルのシーン名（`Main.tscn` / `Ball.tscn`）、Sprite Frames の位置、3D素材の `.blend` ダイアログを直しました。付録の完成コード（2D と 3D）は、4.7.2 で実際に動かして確認しました。
+- 4.7.2（macOS）の実機で、一部の画面と手順を確認済みです（プロジェクト作成、ノードの追加、実行、メインシーン、Project Settings、Signals タブ）。確認の結果、Asset Store の名称、メインシーンのダイアログ、Stretch の初期値、Autoload の画面、サンプルのシーン名（`Main.tscn` / `Ball.tscn`）、Sprite Frames の位置、3D素材の `.blend` ダイアログ、折りたたまれた Inspector の項目（Transform / Theme Overrides / Layout など）、FPS 欄、Groups タブの位置、Layer Names の場所を直しました。付録の完成コード（2D と 3D）は、4.7.2 で実際に動かして確認しました。
 - 画像（`images/` フォルダ）は Godot 公式ドキュメント（4.7 ブランチ）のものを、CC BY 3.0 のもとで利用しています。© Juan Linietsky, Ariel Manzur and the Godot community。一部は 4.4〜4.6 世代の画面で、タブ名などが 4.7 と少し違うことがあります。文章の記述を優先してください。
 
 ## 事前準備
