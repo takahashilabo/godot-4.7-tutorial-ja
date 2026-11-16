@@ -893,7 +893,7 @@ func _unhandled_input(event):
 
 4. `music_player.tscn` として保存
 5. Project > Project Settings > **Globals > Autoload** タブ
-6. **Path** の横のフォルダアイコンから `music_player.tscn` を選び、**Add**
+6. **Select Script/Scene** ボタンから `music_player.tscn` を選ぶ（4.7.2の画面。ボタンは「Select Script/Scene」「+ Create Script」「+ Create Scene」の3つ）。選んだあと、一覧に追加されていれば完了
 
     ![18_register_autoload](images/first_3d_game/08.score_and_replay/18_register_autoload.webp)
 

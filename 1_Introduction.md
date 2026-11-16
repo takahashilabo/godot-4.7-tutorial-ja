@@ -103,7 +103,7 @@ Player (CharacterBody2D)   ← 一番上（ルートノード）
 Godotを起動して最初に出る画面です。
 
 - **Projects タブ**: 既存のプロジェクトを開く、新規作成する、取り込む（Import）
-- **Asset Library タブ**: 無料のデモやアドオンを探す。初回は「Go Online」ボタンを押すまでネットに接続しない（プライバシーのため）
+- **Asset Store タブ**（旧称 Asset Library）: 無料のデモやアドオンを探す。ネットに接続して使う
 - **Settings メニュー**: エディタの言語、テーマ、表示倍率などを変えられる
 
     ![editor_intro_project_manager](images/introduction/editor_intro_project_manager.webp)
@@ -154,7 +154,7 @@ Godotを起動して最初に出る画面です。
 | **3D** | メッシュ、ライト、3Dのステージを作る |
 | **Script** | コードエディタ。デバッガーやコード補完、組み込みのリファレンス付き |
 | **Game** | 実行中のゲームがここに表示される。実行中に一時停止したり調整できるが、**変更は保存されない** |
-| **AssetLib** | 無料のアドオンや素材を探す |
+| **Asset Store** | 無料のアドオンや素材を探す（旧称 AssetLib） |
 
 ![editor_intro_workspace_2d](images/introduction/editor_intro_workspace_2d.webp)
 
@@ -218,7 +218,7 @@ Godotを起動して最初に出る画面です。
 1. Godot 4.7 を起動し、プロジェクトマネージャーが開く
 2. 新規プロジェクトを作る（「Create」をクリック。Project Name に `hello`、Project Path は任意のフォルダ。他の設定は初期値のままでOK）
 3. エディタが開いたら、次の場所を見つけてください:
-   - [ ] 2D / 3D / Script / Game / AssetLib のボタン
+   - [ ] 2D / 3D / Script / Game / Asset Store のボタン
    - [ ] Scene ドック（左上）
    - [ ] FileSystem ドック（左下）。中に `icon.svg` があるはず
    - [ ] Inspector（右）

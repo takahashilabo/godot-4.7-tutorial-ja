@@ -88,7 +88,7 @@
 > **res:// とは**: 保存ダイアログの一番上に出る `res://` は、プロジェクトのフォルダ（resource path = リソースの場所）のことです。エディタは、プロジェクトの外には保存できません。
 
 ✅ 新しいウィンドウが開き、「Hello World」が表示される。
-ウィンドウを閉じるか、**F8**（macOS: Cmd+.）で停止する。
+ウィンドウを閉じるか、エディタの右上の **Stop**（■）ボタンで停止する。ショートカットの F8（macOS: Cmd+.）は、エディタ側を一度クリックしてから押す（実行中のゲームのウィンドウが前にあると、効かないことがある）。
 
 ![nodes_and_scenes_11_final_result](images/step_by_step/nodes_and_scenes_11_final_result.webp)
 
@@ -101,7 +101,7 @@
 
     ![nodes_and_scenes_12_play_button](images/step_by_step/nodes_and_scenes_12_play_button.webp)
 
-2. 「メインシーンを選んでください」というダイアログが出る → 「Select」→ `label.tscn` をダブルクリック
+2. 「No main scene has ever been defined. Select one?」というダイアログが出る → いちばん簡単なのは **Select Current**（いま開いているシーンを選ぶ）。「Select」を押して `label.tscn` をダブルクリックしても同じ
 
     ![nodes_and_scenes_13_main_scene_popup](images/step_by_step/nodes_and_scenes_13_main_scene_popup.webp)
 

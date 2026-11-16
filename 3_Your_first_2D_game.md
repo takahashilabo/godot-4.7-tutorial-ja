@@ -47,7 +47,7 @@ Main  ← ゲーム全体を動かす
 
     ![setting-project-width-and-height](images/first_2d_game/setting-project-width-and-height.webp)
 
-4. 同じ画面の下の方の **Stretch** で、**Mode** を `canvas_items`、**Aspect** を `keep` にする
+4. 同じ画面の下の方の **Stretch** で、**Mode** を `canvas_items`、**Aspect** を `keep` にする（4.7では、新規プロジェクトの Mode は最初から `canvas_items`、Aspect は `expand` になっている。Aspect だけ `keep` に変えればよい）
 
     ![setting-stretch-mode](images/first_2d_game/setting-stretch-mode.webp)
 
