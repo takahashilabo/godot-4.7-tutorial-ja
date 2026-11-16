@@ -1207,3 +1207,18 @@ func _on_mob_squashed():
 | 2 | シーン保存、インスタンス化、スクリプト、入力、シグナル |
 | 3 | 2Dの移動・当たり判定・UI・音 |
 | 4 | 3Dの移動・物理レイヤー・グループ・アニメーション・オートロード |
+
+---
+
+## 実機で確認した注意点（4.7.2 / Mac）
+
+- コードエディタへの手入力は、補完や自動インデントで崩れやすい。長いコードは、ファイルを用意して **Attach Script → Load** で読み込むのが確実。
+- 子ノードを足すときは、**Scene ドックで親が選ばれていること**を確認してから「+」を押す。ノードが増えるとツリーがスクロールし、選択がずれて別の親の下に入りやすい。
+- ノードの削除は **Delete キーが効かないことがある**。右クリック → Delete を使う。名前の変更は F2 ではなく、**ダブルクリック**。
+- Path3D のツールバーは左から Select Points / Select Control Points / Select Tilt / **Add Point** / Delete Point / Close Curve / Clear Points。
+- Project Settings は最初 Input Map が開く。物理レイヤー名は **Layer Names > 3D Physics**。
+- UI の Retry（ColorRect）を画面全体に広げるには、**親の UserInterface も Full Rect** にする。
+- AnimationPlayer の Autoplay と Playing は別のチェック。BGM は **Autoplay** をオンにする。
+- Autoload は `res://music_player.tscn` を選ぶと、ノード名で自動登録される。
+- 外部エディタでスクリプトを書き換えたら、Godot 側で開いているタブを閉じてから Project → Reload Current Project。開いたままだと古い内容で上書きされることがある。
+- プレイヤーが動かないと、最初の敵に数秒で倒される。動作確認のときは矢印キーで動く。
