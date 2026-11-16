@@ -928,6 +928,8 @@ func _unhandled_input(event):
     ![03.float_name](images/first_3d_game/09.adding_animations/03.float_name.webp)
 
 4. **Autoplay**（自動再生）ボタンと、**Loop**（ループ）ボタンを、オンにする
+   - どちらも文字のないアイコンです。**Autoplay on Load** は、パネル上段右の **Edit** ボタンの左隣のアイコン。**Loop** は、パネル下段（タイムラインの行）の一番右にある循環矢印のアイコン
+   - AnimationPlayer を追加すると、Animation パネルは画面下に自動で開きます（細いので、必要なら上端をドラッグして広げる）
 
     ![04.autoplay_and_loop](images/first_3d_game/09.adding_animations/04.autoplay_and_loop.webp)
 
@@ -935,7 +937,7 @@ func _unhandled_input(event):
 
     ![05.pin_icon](images/first_3d_game/09.adding_animations/05.pin_icon.webp)
 
-6. アニメーションの長さを `1.2` 秒にする
+6. アニメーションの長さを `1.2` 秒にする（タイムライン行の右端、Loop アイコンの左にある `1.0` と表示された数値欄を `1.2` に）
 
     ![06.animation_duration](images/first_3d_game/09.adding_animations/06.animation_duration.webp)
 
