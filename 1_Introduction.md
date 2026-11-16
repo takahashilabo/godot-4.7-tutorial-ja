@@ -129,7 +129,7 @@ Godotを起動して最初に出る画面です。
 | Scene ドック | いま開いているシーンのノード一覧。ノードの追加・削除・並べ替え |
 | FileSystem ドック | プロジェクト内のファイル一覧。画像・音・スクリプト・シーン |
 | Inspector | 選んだノードのプロパティを編集 |
-| Signals / Groups タブ | Inspectorの横のタブ。シグナルの接続、グループの設定 |
+| Signals / Groups タブ | Inspectorの横のタブ。シグナルの接続、グループの設定。パネルが狭いと Groups は右端に隠れる（▶ で送る） |
 | 下部パネル | デバッグ出力、アニメーションエディタなど。クリックで縦に開く |
 
 ![editor_intro_top_menus](images/introduction/editor_intro_top_menus.webp)

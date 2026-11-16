@@ -642,7 +642,7 @@ Player のスクリプトで、`fall_acceleration` の次に追加:
 
 ### 6-3. 敵をグループにする
 1. `mob.tscn` を開き、**Mob** を選ぶ
-2. Inspector の隣の **Groups** タブ → **＋** → 名前に `mob` と入力して **OK**
+2. Signals タブの右隣の **Groups** タブ（右パネルが狭いと右端に隠れて見えません。タブ右上の **▶ ボタン**で隠れたタブへ送るか、パネルの境界をドラッグして広げます） → **＋** → 名前に `mob` と入力して **OK**
 
     ![09.groups_tab](images/first_3d_game/06.jump_and_squash/09.groups_tab.webp)
 
