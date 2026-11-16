@@ -493,7 +493,7 @@ func _on_visible_on_screen_notifier_3d_screen_exited():
 
     ![12.four_cylinders](images/first_3d_game/05.spawning_mobs/12.four_cylinders.png)
 
-8. 白くて見づらいので、色を付ける。4つの MeshInstance3D をすべて選び（最初をクリック、最後を Shift+クリック）、Inspector 最上段の **Mesh** 欄（サムネイル）をクリックして展開し、その中の **Material** に **StandardMaterial3D** を作る（MeshInstance3D 本体の Geometry にある Material Override ではない）。色は作った Material をクリックして、**Albedo > Color** で変える
+8. 白くて見づらいので、色を付ける。4つの MeshInstance3D をすべて選び（最初をクリック、最後を Shift+クリック）、Inspector 最上段の **Mesh** 欄（サムネイル）をクリックして展開し、その中の **Material** に **StandardMaterial3D** を作る（MeshInstance3D 本体の Geometry にある Material Override ではない）。色は、作った Material（球のサムネイル）をクリックして展開し、下に並ぶ折りたたみの中から **Albedo** を開いて **Color** で変える
 
     ![13.selecting_all_cylinders](images/first_3d_game/05.spawning_mobs/13.selecting_all_cylinders.webp)
 
